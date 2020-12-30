@@ -1,0 +1,3 @@
+class Constants:
+    RESPONSE_CODES_SUCCESS = [200, 201]
+    RESPONSE_CODES_FAILURE = [400, 401, 404, 500]
