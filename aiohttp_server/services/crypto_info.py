@@ -3,7 +3,7 @@ import requests
 from aiohttp_server.constants.constants import Constants
 
 
-async def main(request):
+async def get_crypto_details(request):
     response = requests.get(Constants.URL)
     if response.status_code in Constants.RESPONSE_CODES_SUCCESS:
         return response.text, response.status_code

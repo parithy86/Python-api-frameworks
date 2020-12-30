@@ -1,26 +1,28 @@
+import importlib
 from aiohttp import web
-import requests
+from aiohttp_server.services import crypto_info
+from aiohttp_server.constants.constants import Constants
 
-from api_apps_python.aiohttp-api-server.constants
 
 async def health(request):
     return web.Response(text="<h1> Async Rest API using aiohttp : Health OK </h1>",
                         content_type='text/html')
 
 
-async def get_crypto_info(request):
-    url = "https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false"
-    response = requests.get(url)
-    if response.status_code in [200, 201]:
-        return web.Response(text=response.text, content_type='application/json')
-    else:
-        return web.Response(text=str({"status": "failure", "status_code": response.status_code}))
+async def run_services(request):
+    service_name = request.match_info['service_name']
+    service_details = Constants.SERVICE_CONFIG.get(service_name)
+    execute_func = getattr(importlib.import_module('aiohttp_server.services.' + service_details['function_name']),
+                           service_details['execute_method'])
+    resp, resp_code = await execute_func(request)
+
+    return web.Response(text=resp, content_type=Constants.CONTENT_TYPE)
 
 
 async def init():
     app = web.Application()
     app.router.add_get("/", health)
-    app.router.add_post("/v1/crypto/info", get_crypto_info)
+    app.router.add_get("/v1/services/{service_name}", run_services)
     return app
 
 
