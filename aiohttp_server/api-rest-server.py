@@ -22,7 +22,7 @@ async def run_services(request):
 async def init():
     app = web.Application()
     app.router.add_get("/", health)
-    app.router.add_get("/v1/services/{service_name}", run_services)
+    app.router.add_post("/v1/services/{service_name}", run_services)
     return app
 
 

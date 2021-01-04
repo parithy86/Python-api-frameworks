@@ -5,8 +5,12 @@ class Constants:
     CONTENT_TYPE = "application/json"
 
     SERVICE_CONFIG = {
-        "crypto_info": {
+        "get_crypto_details": {
             "function_name": "crypto_info",
             "execute_method": "get_crypto_details"
+        },
+        "get_crypto": {
+            "function_name": "crypto_info",
+            "execute_method": "get_crypto"
         }
     }
