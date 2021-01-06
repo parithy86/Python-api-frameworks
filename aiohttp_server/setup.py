@@ -11,7 +11,7 @@ setup(
     name='api-server',
     version='1.0',
     description='REST API server using AIOHTTP',
-    author='Ilamparithy Subbiah',
+    author='Ilam',
     author_email='parithy.s@gmail.com',
     url='',
     include_package_data=True,
