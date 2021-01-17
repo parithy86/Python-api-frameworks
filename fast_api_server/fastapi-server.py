@@ -1,13 +1,7 @@
-from fastapi import FastAPI, Request
 import uvicorn
-import requests
-from fast_api_server.services import crypto_info
+from fastapi import FastAPI
 
-# import requests
-#
-# from FastApi_server.constants.constants import Constants
-# from FastApi_server.utils.helpers_util import read_yaml_configs
-
+from fast_api_server.utils import function_router
 
 app = FastAPI()
 
@@ -18,9 +12,8 @@ async def health():
 
 
 app.include_router(
-    crypto_info.router,
-    prefix="",
-    responses={418: {"description": "I'm a teapot"}},
+    function_router.router,
+    prefix="/v1/services"
 )
 
 if __name__ == '__main__':
