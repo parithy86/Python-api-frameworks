@@ -1,0 +1,9 @@
+name: service_config
+services:
+  get_crypto_details:
+    package_name: crypto_info
+    function_name: get_crypto_details
+
+  get_crypto:
+    package_name: crypto_info
+    function_name: get_crypto
