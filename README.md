@@ -1,5 +1,10 @@
-# api_apps_python
+# API Server - Python Frameworks
 ## About This project
-  Provides repo to spin off API server quickly and provided template which can be used to scale API endpoints quickly
-  
-  We are planning to cover the popular frameworks and this should get you started in spinning of API server quickly
+  This project provides API server covering few of the popular frameworks. We have adapted function as a service capabilities which could scale API endpoints quickly. The following Framework are covers ad part of this repo
+  - AioHttp 
+  - Fast API
+  - Flask
+ ## Project Structure
+  - The project structures with the following structure
+ ## Implementation Steps
+ ## Requirements
